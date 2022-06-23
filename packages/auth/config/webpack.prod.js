@@ -7,15 +7,14 @@ const pjson = require('../package.json');
 const prodConfig = {
     mode: 'production',
     output: {
-        filename: '[name].[contenthash].js',
-        path: '/marketing/latest'
+        filename: '[name].[contenthash].js'
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'marketing',
+            name: 'auth',
             filename: 'remoteEntry.js',
             exposes: {
-                './Marketing': './src/bootstrap'
+                './Auth': './src/bootstrap'
             },
             shared: pjson.dependencies
         }),
